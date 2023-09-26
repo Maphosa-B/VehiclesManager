@@ -21,6 +21,9 @@ namespace VehiclesManager.Entities
         [Required]
         public DateTime AddDate { get; set; }
 
+        [Required]
+        public bool IsActve { get; set; }
+
         [ForeignKey("Client")]
         public int ClientId { get; set; }
 

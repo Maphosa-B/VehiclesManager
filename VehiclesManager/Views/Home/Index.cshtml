@@ -2,3 +2,54 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
+<div class="row">
+
+    <!-- table card-1 start -->
+    <div class="col-md-12 col-xl-4">
+        <div class="card flat-card widget-primar-card">
+            <div class="row-table">
+                <div class="col-sm-3 card-body">
+                    <i class="feather icon-pie-chart"></i>
+                </div>
+                <div class="col-sm-9">
+                    <h4>@ViewData["SuppliersCount"]</h4>
+                    <h6>Suppliers</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- table card-1 start -->
+    <div class="col-md-12 col-xl-4">
+        <div class="card flat-card widget-primary-card">
+            <div class="row-table">
+                <div class="col-sm-3 card-body">
+                    <i class="feather icon-pie-chart"></i>
+                </div>
+                <div class="col-sm-9">
+                    <h4>@ViewData["VehiclesCount"]</h4>
+                    <h6>Overall Vehicles</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- table card-1 start -->
+    <div class="col-md-12 col-xl-4">
+        <div class="card flat-card widget-primary-card">
+            <div class="row-table">
+                <div class="col-sm-3 card-body">
+                    <i class="feather icon-pie-chart"></i>
+                </div>
+                <div class="col-sm-9">
+                    <h4>@ViewData["DriverCount"]</h4>
+                    <h6>Overall Drivers</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+

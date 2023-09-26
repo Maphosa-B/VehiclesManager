@@ -21,6 +21,9 @@ namespace VehiclesManager.Entities
         [Required]
         public DateTime AddDate { get; set; }
 
+        [Required]
+        public bool IsActive { get; set; } = true;
+
         public ICollection<Branch> Branches { get; set; }
     }
 }

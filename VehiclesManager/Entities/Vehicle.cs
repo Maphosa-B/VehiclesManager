@@ -25,6 +25,7 @@ namespace VehiclesManager.Entities
         [Required]
         public bool IsActive { get; set; }
 
+
         [Required]
         [ForeignKey("Supplier")]
         public  int SupplierId { get; set; }

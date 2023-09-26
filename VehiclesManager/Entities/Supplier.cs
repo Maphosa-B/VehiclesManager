@@ -16,6 +16,12 @@ namespace VehiclesManager.Entities
         [Required]
         public string Name { get; set; }
 
+        [Required]
+        public bool IsActive { get; set; } = true;
+
+        [Required]
+        public DateTime AddDate { get; set; } = DateTime.Now;
+
         public ICollection<Vehicle> Vehicles { get; set; }
     }
 }
