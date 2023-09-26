@@ -4,6 +4,7 @@ using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
+using VehiclesManager.Entities;
 
 namespace VehiclesManager.Models
 {
@@ -33,9 +34,15 @@ namespace VehiclesManager.Models
         {
         }
 
+        public DbSet<Supplier> Suppliers { get; set; }
+        public DbSet<Vehicle> Vehicles { get; set; }
+        public DbSet<Driver> Drivers { get; set; }
+        public DbSet<Client> Clients { get; set; }
+        public DbSet<Branch> Branches { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
+
     }
 }

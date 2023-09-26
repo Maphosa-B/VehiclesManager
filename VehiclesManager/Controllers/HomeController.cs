@@ -1,15 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using VehiclesManager.Models;
 
 namespace VehiclesManager.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        private readonly ApplicationDbContext _db;
+
+        public HomeController()
         {
+            _db = new ApplicationDbContext();
+        }
+
+        public async Task<ActionResult> Index()
+        {
+
+            var a = await _db.Suppliers.Include(x => x.Vehicles).ToListAsync();
+
+
             return View();
         }
 

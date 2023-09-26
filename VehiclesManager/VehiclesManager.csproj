@@ -170,6 +170,12 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Entities\Branch.cs" />
+    <Compile Include="Entities\Client.cs" />
+    <Compile Include="Entities\Driver.cs" />
+    <Compile Include="Entities\Supplier.cs" />
+    <Compile Include="Entities\LeasedVehicle.cs" />
+    <Compile Include="Entities\Vehicle.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -180,6 +186,18 @@
     <Compile Include="Migrations\202309262005595_Added profile data.cs" />
     <Compile Include="Migrations\202309262005595_Added profile data.Designer.cs">
       <DependentUpon>202309262005595_Added profile data.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309262043528_Adding Suppliers Table.cs" />
+    <Compile Include="Migrations\202309262043528_Adding Suppliers Table.Designer.cs">
+      <DependentUpon>202309262043528_Adding Suppliers Table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309262128262_ff.cs" />
+    <Compile Include="Migrations\202309262128262_ff.Designer.cs">
+      <DependentUpon>202309262128262_ff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309262137157_Added remaining tables.cs" />
+    <Compile Include="Migrations\202309262137157_Added remaining tables.Designer.cs">
+      <DependentUpon>202309262137157_Added remaining tables.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -210,6 +228,158 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Template\assets\css\layout-dark.css" />
+    <Content Include="Template\assets\css\layout-rtl.css" />
+    <Content Include="Template\assets\css\plugins\animate.min.css" />
+    <Content Include="Template\assets\css\plugins\bootstrap.min.css" />
+    <Content Include="Template\assets\css\plugins\perfect-scrollbar.css" />
+    <Content Include="Template\assets\css\plugins\prism-coy.css" />
+    <Content Include="Template\assets\css\style.css" />
+    <Content Include="Template\assets\fonts\fa-brands-400.svg" />
+    <Content Include="Template\assets\fonts\fa-regular-400.svg" />
+    <Content Include="Template\assets\fonts\fa-solid-900.svg" />
+    <Content Include="Template\assets\fonts\feather.svg" />
+    <Content Include="Template\assets\fonts\Flaticon.svg" />
+    <Content Include="Template\assets\fonts\pct.svg" />
+    <Content Include="Template\assets\images\auth\auth-logo-dark.png" />
+    <Content Include="Template\assets\images\auth\auth-logo.png" />
+    <Content Include="Template\assets\images\auth\img-auth-big.jpg" />
+    <Content Include="Template\assets\images\browser\chrome.png" />
+    <Content Include="Template\assets\images\browser\firefox.png" />
+    <Content Include="Template\assets\images\browser\ie.png" />
+    <Content Include="Template\assets\images\browser\opera.png" />
+    <Content Include="Template\assets\images\browser\safari.png" />
+    <Content Include="Template\assets\images\cd-arrow.svg" />
+    <Content Include="Template\assets\images\close.png" />
+    <Content Include="Template\assets\images\complete.png" />
+    <Content Include="Template\assets\images\favicon.ico" />
+    <Content Include="Template\assets\images\gallery-grid\img-grd-gal-1.jpg" />
+    <Content Include="Template\assets\images\gallery-grid\img-grd-gal-2.jpg" />
+    <Content Include="Template\assets\images\gallery-grid\img-grd-gal-3.jpg" />
+    <Content Include="Template\assets\images\gallery-grid\img-grd-gal-4.jpg" />
+    <Content Include="Template\assets\images\gallery-grid\img-grd-gal-5.jpg" />
+    <Content Include="Template\assets\images\gallery-grid\img-grd-gal-6.jpg" />
+    <Content Include="Template\assets\images\gallery-grid\masonry-1.jpg" />
+    <Content Include="Template\assets\images\gallery-grid\masonry-2.jpg" />
+    <Content Include="Template\assets\images\gallery-grid\masonry-3.jpg" />
+    <Content Include="Template\assets\images\gallery-grid\masonry-4.jpg" />
+    <Content Include="Template\assets\images\gallery-grid\masonry-5.jpg" />
+    <Content Include="Template\assets\images\gallery-grid\masonry-6.jpg" />
+    <Content Include="Template\assets\images\gallery-grid\masonry-7.jpg" />
+    <Content Include="Template\assets\images\gallery-grid\masonry-8.jpg" />
+    <Content Include="Template\assets\images\hover-effect\triangle.svg" />
+    <Content Include="Template\assets\images\hover-effect\triangle2.svg" />
+    <Content Include="Template\assets\images\light-box\l1.jpg" />
+    <Content Include="Template\assets\images\light-box\l2.jpg" />
+    <Content Include="Template\assets\images\light-box\l3.jpg" />
+    <Content Include="Template\assets\images\light-box\l4.jpg" />
+    <Content Include="Template\assets\images\light-box\l5.jpg" />
+    <Content Include="Template\assets\images\light-box\l6.jpg" />
+    <Content Include="Template\assets\images\light-box\mixin.jpg" />
+    <Content Include="Template\assets\images\light-box\sl1.jpg" />
+    <Content Include="Template\assets\images\light-box\sl2.jpg" />
+    <Content Include="Template\assets\images\light-box\sl3.jpg" />
+    <Content Include="Template\assets\images\light-box\sl4.jpg" />
+    <Content Include="Template\assets\images\light-box\sl5.jpg" />
+    <Content Include="Template\assets\images\light-box\sl6.jpg" />
+    <Content Include="Template\assets\images\light-box\smixin.jpg" />
+    <Content Include="Template\assets\images\light-box\v1.jpg" />
+    <Content Include="Template\assets\images\light-box\v2.jpg" />
+    <Content Include="Template\assets\images\light-box\v3.jpg" />
+    <Content Include="Template\assets\images\light-box\v4.jpg" />
+    <Content Include="Template\assets\images\loading.gif" />
+    <Content Include="Template\assets\images\logo-dark.png" />
+    <Content Include="Template\assets\images\logo-docs.png" />
+    <Content Include="Template\assets\images\logo-icon.png" />
+    <Content Include="Template\assets\images\logo-old.png" />
+    <Content Include="Template\assets\images\logo-thumb.png" />
+    <Content Include="Template\assets\images\logo.png" />
+    <Content Include="Template\assets\images\maintance\404.png" />
+    <Content Include="Template\assets\images\maintance\maintance.png" />
+    <Content Include="Template\assets\images\maintance\sark.svg" />
+    <Content Include="Template\assets\images\maintance\ship.svg" />
+    <Content Include="Template\assets\images\maintance\sparcle-1.png" />
+    <Content Include="Template\assets\images\maintance\sparcle-2.png" />
+    <Content Include="Template\assets\images\next.png" />
+    <Content Include="Template\assets\images\prev.png" />
+    <Content Include="Template\assets\images\product\prod-1.jpg" />
+    <Content Include="Template\assets\images\profile\bg-1.jpg" />
+    <Content Include="Template\assets\images\profile\bg-2.jpg" />
+    <Content Include="Template\assets\images\profile\bg-3.jpg" />
+    <Content Include="Template\assets\images\profile\bg-4.jpg" />
+    <Content Include="Template\assets\images\profile\cover.jpg" />
+    <Content Include="Template\assets\images\slider\img-slide-1.jpg" />
+    <Content Include="Template\assets\images\slider\img-slide-2.jpg" />
+    <Content Include="Template\assets\images\slider\img-slide-3.jpg" />
+    <Content Include="Template\assets\images\slider\img-slide-4.jpg" />
+    <Content Include="Template\assets\images\slider\img-slide-5.jpg" />
+    <Content Include="Template\assets\images\slider\img-slide-6.jpg" />
+    <Content Include="Template\assets\images\slider\img-slide-7.jpg" />
+    <Content Include="Template\assets\images\ticket\p1.jpg" />
+    <Content Include="Template\assets\images\ticket\p2.jpg" />
+    <Content Include="Template\assets\images\ticket\p3.jpg" />
+    <Content Include="Template\assets\images\ticket\p4.jpg" />
+    <Content Include="Template\assets\images\ticket\p5.jpg" />
+    <Content Include="Template\assets\images\user\avatar-1.jpg" />
+    <Content Include="Template\assets\images\user\avatar-2.jpg" />
+    <Content Include="Template\assets\images\user\avatar-3.jpg" />
+    <Content Include="Template\assets\images\user\avatar-4.jpg" />
+    <Content Include="Template\assets\images\user\avatar-5.jpg" />
+    <Content Include="Template\assets\images\user\cover.jpg" />
+    <Content Include="Template\assets\images\user\img-avatar-1.jpg" />
+    <Content Include="Template\assets\images\user\img-avatar-2.jpg" />
+    <Content Include="Template\assets\images\user\img-avatar-3.jpg" />
+    <Content Include="Template\assets\images\widget\AUSTRALIA.jpg" />
+    <Content Include="Template\assets\images\widget\blur-bg.png" />
+    <Content Include="Template\assets\images\widget\BRAZIL.jpg" />
+    <Content Include="Template\assets\images\widget\dashborad-1.jpg" />
+    <Content Include="Template\assets\images\widget\dashborad-2.jpg" />
+    <Content Include="Template\assets\images\widget\dashborad-3.jpg" />
+    <Content Include="Template\assets\images\widget\dashborad-4.jpg" />
+    <Content Include="Template\assets\images\widget\dashborad-5.jpg" />
+    <Content Include="Template\assets\images\widget\emoticon.jpg" />
+    <Content Include="Template\assets\images\widget\GERMANY.jpg" />
+    <Content Include="Template\assets\images\widget\img-round1.jpg" />
+    <Content Include="Template\assets\images\widget\p1.jpg" />
+    <Content Include="Template\assets\images\widget\p2.jpg" />
+    <Content Include="Template\assets\images\widget\p3.jpg" />
+    <Content Include="Template\assets\images\widget\p4.jpg" />
+    <Content Include="Template\assets\images\widget\PHONE1.jpg" />
+    <Content Include="Template\assets\images\widget\PHONE2.jpg" />
+    <Content Include="Template\assets\images\widget\PHONE3.jpg" />
+    <Content Include="Template\assets\images\widget\PHONE4.jpg" />
+    <Content Include="Template\assets\images\widget\profile-person1.jpg" />
+    <Content Include="Template\assets\images\widget\slider5.jpg" />
+    <Content Include="Template\assets\images\widget\slider6.jpg" />
+    <Content Include="Template\assets\images\widget\slider7.jpg" />
+    <Content Include="Template\assets\images\widget\UK.jpg" />
+    <Content Include="Template\assets\images\widget\USA.jpg" />
+    <Content Include="Template\assets\images\widget\user-blur-bg.png" />
+    <Content Include="Template\assets\images\widget\wather2bottom.png" />
+    <Content Include="Template\assets\images\widget\watherbottom.png" />
+    <Content Include="Template\assets\images\widget\wathernature.png" />
+    <Content Include="Template\assets\images\widget\watherstar1.png" />
+    <Content Include="Template\assets\images\widget\watherstar2.png" />
+    <Content Include="Template\assets\json\2500.txt" />
+    <Content Include="Template\assets\json\file-upload.php" />
+    <Content Include="Template\assets\js\analytics.js" />
+    <Content Include="Template\assets\js\analytics.min.js" />
+    <Content Include="Template\assets\js\horizontal-menu.js" />
+    <Content Include="Template\assets\js\pages\chart-apex.js" />
+    <Content Include="Template\assets\js\pages\dashboard-main.js" />
+    <Content Include="Template\assets\js\pages\google-maps.js" />
+    <Content Include="Template\assets\js\pcoded.js" />
+    <Content Include="Template\assets\js\pcoded.min.js" />
+    <Content Include="Template\assets\js\plugins\apexcharts.min.js" />
+    <Content Include="Template\assets\js\plugins\bootstrap.min.js" />
+    <Content Include="Template\assets\js\plugins\gmaps.min.js" />
+    <Content Include="Template\assets\js\plugins\jquery-ui.min.js" />
+    <Content Include="Template\assets\js\plugins\perfect-scrollbar.min.js" />
+    <Content Include="Template\assets\js\plugins\prism.js" />
+    <Content Include="Template\assets\js\uikit.js" />
+    <Content Include="Template\assets\js\uikit.min.js" />
+    <Content Include="Template\assets\js\vendor-all.js" />
+    <Content Include="Template\assets\js\vendor-all.min.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -221,8 +391,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
     <Content Include="Views\Account\ConfirmEmail.cshtml" />
@@ -244,6 +412,44 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Shared\_MainLayout.cshtml" />
+    <Content Include="Template\assets\fonts\fa-brands-400.eot" />
+    <Content Include="Template\assets\fonts\fa-brands-400.ttf" />
+    <Content Include="Template\assets\fonts\fa-brands-400.woff" />
+    <Content Include="Template\assets\fonts\fa-brands-400.woff2" />
+    <Content Include="Template\assets\fonts\fa-regular-400.eot" />
+    <Content Include="Template\assets\fonts\fa-regular-400.ttf" />
+    <Content Include="Template\assets\fonts\fa-regular-400.woff" />
+    <Content Include="Template\assets\fonts\fa-regular-400.woff2" />
+    <Content Include="Template\assets\fonts\fa-solid-900.eot" />
+    <Content Include="Template\assets\fonts\fa-solid-900.ttf" />
+    <Content Include="Template\assets\fonts\fa-solid-900.woff" />
+    <Content Include="Template\assets\fonts\fa-solid-900.woff2" />
+    <Content Include="Template\assets\fonts\feather.eot" />
+    <Content Include="Template\assets\fonts\feather.ttf" />
+    <Content Include="Template\assets\fonts\feather.woff" />
+    <Content Include="Template\assets\fonts\Flaticon.eot" />
+    <Content Include="Template\assets\fonts\Flaticon.ttf" />
+    <Content Include="Template\assets\fonts\Flaticon.woff" />
+    <Content Include="Template\assets\fonts\Flaticon.woff2" />
+    <Content Include="Template\assets\fonts\opensans\mem5YaGs126MiZpBA-UNirkOUehpOqc.woff2" />
+    <Content Include="Template\assets\fonts\opensans\mem5YaGs126MiZpBA-UNirkOVuhpOqc.woff2" />
+    <Content Include="Template\assets\fonts\opensans\mem5YaGs126MiZpBA-UNirkOX-hpOqc.woff2" />
+    <Content Include="Template\assets\fonts\opensans\mem5YaGs126MiZpBA-UNirkOXehpOqc.woff2" />
+    <Content Include="Template\assets\fonts\opensans\mem5YaGs126MiZpBA-UNirkOXOhpOqc.woff2" />
+    <Content Include="Template\assets\fonts\opensans\mem5YaGs126MiZpBA-UNirkOXuhpOqc.woff2" />
+    <Content Include="Template\assets\fonts\opensans\mem8YaGs126MiZpBA-UFUZ0bbck.woff2" />
+    <Content Include="Template\assets\fonts\opensans\mem8YaGs126MiZpBA-UFVp0bbck.woff2" />
+    <Content Include="Template\assets\fonts\opensans\mem8YaGs126MiZpBA-UFVZ0b.woff2" />
+    <Content Include="Template\assets\fonts\opensans\mem8YaGs126MiZpBA-UFW50bbck.woff2" />
+    <Content Include="Template\assets\fonts\opensans\mem8YaGs126MiZpBA-UFWJ0bbck.woff2" />
+    <Content Include="Template\assets\fonts\opensans\mem8YaGs126MiZpBA-UFWp0bbck.woff2" />
+    <Content Include="Template\assets\fonts\opensans\mem8YaGs126MiZpBA-UFWZ0bbck.woff2" />
+    <Content Include="Template\assets\fonts\pct.eot" />
+    <Content Include="Template\assets\fonts\pct.ttf" />
+    <Content Include="Template\assets\fonts\pct.woff" />
+    <Content Include="Template\assets\json\cities.json" />
+    <Content Include="Template\assets\json\citynames.json" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -267,6 +473,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202309262005595_Added profile data.resx">
       <DependentUpon>202309262005595_Added profile data.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309262043528_Adding Suppliers Table.resx">
+      <DependentUpon>202309262043528_Adding Suppliers Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309262128262_ff.resx">
+      <DependentUpon>202309262128262_ff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309262137157_Added remaining tables.resx">
+      <DependentUpon>202309262137157_Added remaining tables.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
