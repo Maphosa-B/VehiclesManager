@@ -44,8 +44,13 @@ namespace VehiclesManager.Controllers
             ViewData["DriverCount"] = drivers.Count();
 
             List<IndexModel> model = new List<IndexModel>();
+
             var clients = await _db.Clients.Where(x => x.IsActive == true).Include(x => x.Branches).ToListAsync();
-            foreach(var i in clients)
+            ViewData["ClientsTotal"] = clients.Count();
+
+            int branchesTotal = 0;
+            int totalLeasedVehicles = 0;
+            foreach (var i in clients)
             {
                 IndexModel tempModel = new IndexModel
                 {
@@ -57,9 +62,14 @@ namespace VehiclesManager.Controllers
                 {
                     var leaseVehicles = await _db.LeasedVehicles.Where(x => x.BranchId == r.Id && x.IsReturned == false).ToListAsync();
                     tempModel.TotalLeasedVehicles += leaseVehicles.Count();
+                    totalLeasedVehicles += leaseVehicles.Count();
+                    branchesTotal++;
                 }
                 model.Add(tempModel);
             }
+            ViewData["BranchesCount"] = branchesTotal;
+            ViewData["LeasedVehicles"] = totalLeasedVehicles;
+
             return View(model);
         }
 

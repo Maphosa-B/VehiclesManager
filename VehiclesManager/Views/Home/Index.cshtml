@@ -4,8 +4,6 @@
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
-
-
 <div class="row mt-2">
 
     <!-- table card-1 start -->
@@ -48,6 +46,52 @@
                 <div class="col-sm-9">
                     <h4>@ViewData["DriverCount"]</h4>
                     <h6>Overall Drivers</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- table card-1 start -->
+    <div class="col-md-12 col-xl-4">
+        <div class="card flat-card widget-primary-card">
+            <div class="row-table">
+                <div class="col-sm-3 card-body">
+                    <i class="feather icon-pie-chart"></i>
+                </div>
+                <div class="col-sm-9">
+                    <h4>@ViewData["ClientsTotal"] </h4>
+                    <h6>Clients</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- table card-1 start -->
+    <div class="col-md-12 col-xl-4">
+        <div class="card flat-card widget-primary-card">
+            <div class="row-table">
+                <div class="col-sm-3 card-body">
+                    <i class="feather icon-pie-chart"></i>
+                </div>
+                <div class="col-sm-9">
+                    <h4>@ViewData["BranchesCount"] </h4>
+                    <h6>Branches</h6>
+                </div>
+            </div>
+        </div>
+    </div>  
+    
+    
+    <!-- table card-1 start -->
+    <div class="col-md-12 col-xl-4">
+        <div class="card flat-card widget-primary-card">
+            <div class="row-table">
+                <div class="col-sm-3 card-body">
+                    <i class="feather icon-pie-chart"></i>
+                </div>
+                <div class="col-sm-9">
+                    <h4>@ViewData["LeasedVehicles"] </h4>
+                    <h6>Leased Vehicles</h6>
                 </div>
             </div>
         </div>
