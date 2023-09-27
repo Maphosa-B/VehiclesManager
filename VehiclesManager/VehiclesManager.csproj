@@ -211,6 +211,10 @@
     <Compile Include="Migrations\202309262343241_Removed plural in vehice registration.Designer.cs">
       <DependentUpon>202309262343241_Removed plural in vehice registration.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202309270042540_Added cellphome number and email on driver details.cs" />
+    <Compile Include="Migrations\202309270042540_Added cellphome number and email on driver details.Designer.cs">
+      <DependentUpon>202309270042540_Added cellphome number and email on driver details.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -464,6 +468,7 @@
     <Content Include="Template\assets\json\citynames.json" />
     <Content Include="Views\Management\Suppliers.cshtml" />
     <Content Include="Views\Management\SupplierVehicles.cshtml" />
+    <Content Include="Views\Management\Drivers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -502,6 +507,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202309262343241_Removed plural in vehice registration.resx">
       <DependentUpon>202309262343241_Removed plural in vehice registration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309270042540_Added cellphome number and email on driver details.resx">
+      <DependentUpon>202309270042540_Added cellphome number and email on driver details.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

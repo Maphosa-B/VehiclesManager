@@ -1,8 +1,8 @@
-﻿@model  List<VehiclesManager.Entities.Vehicle>
+﻿@model  List<VehiclesManager.Entities.Driver>
 
 
 @{
-    ViewBag.Title = "Supplier Vehicles";
+    ViewBag.Title = "Drivers";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
@@ -10,10 +10,9 @@
     <div class="card-body">
         <div class="row">
             <div class="col-10">
-                <h5>Vehicles</h5>
             </div>
             <div class="col-2">
-                <button type="button" class="btn  btn-primary w-100" data-toggle="modal" data-target="#exampleModalLive">Add Vehicle</button>
+                <button type="button" class="btn  btn-primary w-100" data-toggle="modal" data-target="#exampleModalLive">Add Driver</button>
             </div>
         </div>
     </div>
@@ -29,9 +28,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Add Date</th>
-                                    <th>Model</th>
-                                    <th>Registration</th>
+                                    <th width="80%">Name</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -39,15 +36,14 @@
                                 @foreach (var i in Model)
                                 {
                                     <tr>
-                                        <td>@i.AddDate</td>
-                                        <td>@i.Model</td>
-                                        <td>@i.Registration</td>
+                                        <td>@i.FirstName</td>
                                         <td>
                                             <a href="#" class="mr-1 badge badge-pill badge-info p-1"> Update</a>
-                                            <a href="~/Management/SupplierVehicles/@i.Id" class="mr-1 badge badge-pill badge-primary p-1"> Vehicles</a>
+                                            <a href="~/Management/SupplierVehicles?supplierId=@i.Id" class="mr-1 badge badge-pill badge-primary p-1">Drivers</a>
                                         </td>
                                     </tr>
                                 }
+
                             </tbody>
                         </table>
                     </div>
@@ -62,7 +58,7 @@ else
         <div class="card-body">
             <div class="row">
                 <div class="col-10 text-center">
-                    <h5>There are no added under this supplier</h5>
+                    <h5>There are no added drivers</h5>
                 </div>
             </div>
         </div>
@@ -74,37 +70,45 @@ else
 
 <div id="exampleModalLive" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        @using (Html.BeginForm("AddSupplierVehicle", "Management", FormMethod.Post))
+        @using (Html.BeginForm("AddDriver", "Management", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
-            <input type="hidden" name="supplierId" value="@ViewData["supplierId"] " />
-
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLiveLabel">Supplier</h5>
+                    <h5 class="modal-title" id="exampleModalLiveLabel">Driver</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
 
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="name">Model</label>
-                        <input type="text" maxlength="50" class="form-control" id="model" name="model" required>
+                        <label for="firstname">First Name</label>
+                        <input type="text" maxlength="50" class="form-control" id="firstname" name="firstname" required>
                     </div>
+
                     <div class="form-group">
-                        <label for="name">Registration</label>
-                        <input type="text" maxlength="50" class="form-control" id="registration" name="registration" required>
+                        <label for="lastname">Last Name</label>
+                        <input type="text" maxlength="50" class="form-control" id="lastname" name="lastname" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="emailadress">Email Adress</label>
+                        <input type="email" maxlength="50" class="form-control" id="emailadress" name="emailadress" required>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="cellphonenumber">Cell phone number</label>
+                        <input type="tel" maxlength="50" class="form-control" id="cellphonenumber" name="cellphonenumber" required>
                     </div>
                 </div>
 
                 <div class="modal-footer">
                     <button type="button" class="btn  btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="submit" class="btn  btn-primary">Save</button>
+                    <button type="submit" class="btn  btn-primary">Save changes</button>
                 </div>
             </div>
         }
-
-
 
     </div>
 </div>

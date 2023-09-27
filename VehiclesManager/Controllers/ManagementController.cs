@@ -18,8 +18,6 @@ namespace VehiclesManager.Controllers
             _db = new ApplicationDbContext();
         }
 
-
-
         public async Task<ActionResult> Suppliers()
         {
             List<Supplier> suppliers = await _db.Suppliers.Where(x => x.IsActive == true).OrderBy(x => x.Name).ToListAsync();
@@ -49,6 +47,7 @@ namespace VehiclesManager.Controllers
             return RedirectToAction("Suppliers", "Management");
         }
 
+
         public async Task<ActionResult> SupplierVehicles(int? supplierId)
         {
             if(supplierId == null)
@@ -61,6 +60,7 @@ namespace VehiclesManager.Controllers
             List<Vehicle> vehicles = await _db.Vehicles.Where(x => x.IsActive == true && x.SupplierId == supplierId).OrderBy(x => x.AddDate).ToListAsync();
             return View(vehicles);
         }
+
 
         [HttpPost]
         public async Task<ActionResult> AddSupplierVehicle(FormCollection fc)
@@ -89,6 +89,45 @@ namespace VehiclesManager.Controllers
             }
 
             return RedirectToAction("SupplierVehicles", "Management", new { supplierId = supplierId });
+        }
+
+
+        public async Task<ActionResult> Drivers()
+        {
+            List<Driver> drivers = await _db.Drivers.Where(x => x.IsActive == true).OrderBy(x => x.FirstName).ToListAsync();
+            return View(drivers);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AddDriver(FormCollection fc)
+        {
+            string firstname = fc["firstname"];
+            string lastname = fc["lastname"];
+            string emailadress = fc["emailadress"];
+            string cellphonenumber = fc["cellphonenumber"];
+
+
+
+            _db.Drivers.Add(new Driver()
+            {
+                AddDate = System.DateTime.Now,
+                IsActive = true,
+                FirstName = firstname,
+                LastName = lastname,
+                EmailAddress = emailadress,
+            });
+
+            var status = await _db.SaveChangesAsync();
+            if (status > 0)
+            {
+                TempData["status"] = "Driver has been added";
+            }
+            else
+            {
+                TempData["error"] = "Driver is not added";
+            }
+
+            return RedirectToAction("Drivers", "Management");
         }
     }
 }
