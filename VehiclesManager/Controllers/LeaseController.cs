@@ -90,7 +90,54 @@ namespace VehiclesManager.Controllers
             {
 
             }
+
             return RedirectToAction("BranchLeaseRecords", "Lease", new { branchId = branchId });
+        }
+
+        public async Task<ActionResult> ViewRecordDetails(int? leasedVehicleId)
+        {
+            if (leasedVehicleId == null)
+            {
+                return RedirectToAction("Clients", "Lease");
+            }
+
+            ViewData["clientId"] = leasedVehicleId;
+
+            LeasedVehicle vehicle = await _db.LeasedVehicles.Where(x => x.Id == leasedVehicleId)
+                                                            .OrderBy(x => x.AddDate)
+                                                            .Include(x => x.Vehicle)
+                                                            .Include(x => x.Vehicle.Supplier)
+                                                            .Include(x => x.Driver)
+                                                            .Include(x => x.Branch)
+                                                            .Include(x => x.Branch.Client)
+                                                            .FirstOrDefaultAsync();
+            return View(vehicle);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> ReturnVehicle(FormCollection fc)
+        {
+            int damageStatus = Convert.ToInt32(fc["damageStatus"]);
+            string comment = fc["comment"];
+            int leasedVehicleId = Convert.ToInt32(fc["leasedVehicleId"]);
+
+            var data = await _db.LeasedVehicles.Where(x => x.Id == leasedVehicleId).FirstOrDefaultAsync();
+            data.IsReturned = true;
+            data.ReturnDate = DateTime.Now;
+            data.ConditionStatus = damageStatus;
+            data.Comment = comment;
+
+
+            var status = await _db.SaveChangesAsync();
+            if (status > 0)
+            {
+
+            }
+            else
+            {
+
+            }
+            return RedirectToAction("ViewRecordDetails", "Lease", new { leasedVehicleId = leasedVehicleId });
         }
     }
 }

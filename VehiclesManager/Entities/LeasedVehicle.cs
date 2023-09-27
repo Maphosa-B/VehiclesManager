@@ -23,6 +23,8 @@ namespace VehiclesManager.Entities
 
         public int? ConditionStatus { get; set; } = null;
 
+        public string Comment { get; set; } 
+
         [Required]
         [ForeignKey("Vehicle")]
         public int VehicleId { get; set; }

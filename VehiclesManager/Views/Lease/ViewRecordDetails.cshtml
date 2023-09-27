@@ -1,0 +1,138 @@
+﻿@model  VehiclesManager.Entities.LeasedVehicle
+@{
+    ViewBag.Title = "Record Details";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="card w-100 mb-2">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-10">
+                <h5>Lease Record</h5>
+            </div>
+
+            @if (Model.IsReturned == false)
+            {
+                <div class="col-2">
+                    <button type="button" class="btn  btn-primary w-100" data-toggle="modal" data-target="#exampleModalLive">Prosess</button>
+                </div>
+            }
+
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body table-border-style">
+                <div class="table-responsive">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th width="300px">Vehicle</th>
+                                <th>@Model.Vehicle.Supplier.Name - @Model.Vehicle.Model ( @Model.Vehicle.Registration ) </th>
+                            </tr>
+
+                            <tr>
+                                <th width="300px">Clinet</th>
+                                <th>@Model.Branch.Client.Name</th>
+                            </tr>
+                            <tr>
+                                <th>Branch</th>
+                                <th>@Model.Branch.Name</th>
+                            </tr>
+                            <tr>
+                                <th width="300px">Leased On</th>
+                                <th>@Model.AddDate</th>
+                            </tr>
+
+                            @if (Model.IsReturned == true)
+                            {
+                                    <tr>
+                                        <th width="300px">Returned On</th>
+                                        <th>@Model.ReturnDate</th>
+                                    </tr>
+
+                                    if (Model.ConditionStatus == 1)
+                                    {
+
+                                        <tr>
+                                            <th width="300px">Returne Condition </th>
+                                            <td>Minor Damage</td>
+                                        </tr>
+                                    }
+                                    else if (Model.ConditionStatus == 2)
+                                    {
+                                        <tr>
+                                            <th width="300px">Returne Condition </th>
+                                            <td>Major Damage</td>
+                                        </tr>
+                                    }
+                                    else
+                                    {
+                                        <tr>
+                                            <th width="300px">Returne Condition </th>
+                                            <td>Minor Damage</td>
+                                        </tr>
+                                    }
+                              }
+
+
+                            <tr>
+                                <th width="300px">Driver</th>
+                                <th>@Model.Driver.FirstName  @Model.Driver.LastName (@Model.Driver.EmailAddress)</th>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div id="exampleModalLive" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        @using (Html.BeginForm("ReturnVehicle", "Lease", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="leasedVehicleId" value="@Model.Id" />
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLiveLabel">Lease vehicle</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="name">Vehicle Condition</label>
+
+                        <select class="custom-select" name="damageStatus" required>
+                            <option value="0">No Damage</option>
+                            <option value="1">Minor Damage</option>
+                            <option value="2">Major Damage</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="name">Comment</label>
+                        <textarea class="form-control" name="comment" id="exampleFormControlTextarea1" rows="3" placeholder="Optional"></textarea>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn  btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn  btn-primary">Save</button>
+                </div>
+            </div>
+        }
+
+
+
+    </div>
+</div>

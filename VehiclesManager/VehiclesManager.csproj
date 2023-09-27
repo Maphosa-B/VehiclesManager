@@ -232,6 +232,10 @@
     <Compile Include="Migrations\202309271258338_Added additional attributes on vehicles.Designer.cs">
       <DependentUpon>202309271258338_Added additional attributes on vehicles.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202309271543593_Added comment attribute on Leased Vehicle.cs" />
+    <Compile Include="Migrations\202309271543593_Added comment attribute on Leased Vehicle.Designer.cs">
+      <DependentUpon>202309271543593_Added comment attribute on Leased Vehicle.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -492,6 +496,7 @@
     <Content Include="Views\Lease\Clients.cshtml" />
     <Content Include="Views\Lease\ClientBranches.cshtml" />
     <Content Include="Views\Lease\BranchLeaseRecords.cshtml" />
+    <Content Include="Views\Lease\ViewRecordDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -545,6 +550,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202309271258338_Added additional attributes on vehicles.resx">
       <DependentUpon>202309271258338_Added additional attributes on vehicles.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309271543593_Added comment attribute on Leased Vehicle.resx">
+      <DependentUpon>202309271543593_Added comment attribute on Leased Vehicle.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
