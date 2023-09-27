@@ -1,2 +1,99 @@
-﻿@model VehiclesManager.Entities.Supplier
+﻿@model  List<VehiclesManager.Entities.Supplier>
 
+
+@{
+    ViewBag.Title = "Suppliers";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="card w-100 mb-2">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-10">
+            </div>
+            <div class="col-2">
+                <button type="button" class="btn  btn-primary w-100" data-toggle="modal" data-target="#exampleModalLive">Add Supplier</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (Model.Count() > 0)
+{
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body table-border-style">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th width="80%">Name</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var i in Model)
+                                {
+                                    <tr>
+                                        <td>@i.Name</td>
+                                        <td>
+                                            <a href="#" class="mr-1 badge badge-pill badge-info p-1"> Update</a>
+                                            <a href="~/Management/SupplierVehicles?supplierId=@i.Id" class="mr-1 badge badge-pill badge-primary p-1"> Vehicles</a>
+                                        </td>
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+<div class="card w-100">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-10 text-center">
+                <h5>There are no added suppliers</h5>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+}
+
+
+        <div id="exampleModalLive" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                @using (Html.BeginForm("AddSupplier", "Management", FormMethod.Post))
+                {
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLiveLabel">Supplier</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        </div>
+
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" maxlength="50" class="form-control" id="name" name="name" required>
+                            </div>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn  btn-secondary" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn  btn-primary">Save changes</button>
+                        </div>
+                    </div>
+                }
+
+
+
+            </div>
+        </div>

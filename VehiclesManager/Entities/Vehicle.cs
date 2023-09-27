@@ -17,7 +17,7 @@ namespace VehiclesManager.Entities
         public string Model { get; set; }
 
         [Required]
-        public string Registrations { get; set; }
+        public string Registration { get; set; }
 
         [Required]
         public DateTime AddDate { get; set; }

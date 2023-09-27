@@ -51,6 +51,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Humanizer, Version=2.14.0.0, Culture=neutral, PublicKeyToken=979442b78dfc278e, processorArchitecture=MSIL">
+      <HintPath>..\packages\Humanizer.Core.2.14.1\lib\netstandard2.0\Humanizer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -203,6 +206,10 @@
     <Compile Include="Migrations\202309262212336_Added Is Active flags in multiple tables.cs" />
     <Compile Include="Migrations\202309262212336_Added Is Active flags in multiple tables.Designer.cs">
       <DependentUpon>202309262212336_Added Is Active flags in multiple tables.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309262343241_Removed plural in vehice registration.cs" />
+    <Compile Include="Migrations\202309262343241_Removed plural in vehice registration.Designer.cs">
+      <DependentUpon>202309262343241_Removed plural in vehice registration.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -456,6 +463,7 @@
     <Content Include="Template\assets\json\cities.json" />
     <Content Include="Template\assets\json\citynames.json" />
     <Content Include="Views\Management\Suppliers.cshtml" />
+    <Content Include="Views\Management\SupplierVehicles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -491,6 +499,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202309262212336_Added Is Active flags in multiple tables.resx">
       <DependentUpon>202309262212336_Added Is Active flags in multiple tables.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309262343241_Removed plural in vehice registration.resx">
+      <DependentUpon>202309262343241_Removed plural in vehice registration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

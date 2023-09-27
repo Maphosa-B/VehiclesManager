@@ -1,0 +1,110 @@
+﻿@model  List<VehiclesManager.Entities.Vehicle>
+
+
+@{
+    ViewBag.Title = "Supplier Vehicles";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="card w-100 mb-2">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-10">
+                <h5>Vehicles</h5>
+            </div>
+            <div class="col-2">
+                <button type="button" class="btn  btn-primary w-100" data-toggle="modal" data-target="#exampleModalLive">Add Vehicle</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (Model.Count() > 0)
+{
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body table-border-style">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Add Date</th>
+                                    <th>Model</th>
+                                    <th>Registration</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var i in Model)
+                                {
+                                    <tr>
+                                        <td>@i.AddDate</td>
+                                        <td>@i.Model</td>
+                                        <td>@i.Registration</td>
+                                        <td>
+                                            <a href="#" class="mr-1 badge badge-pill badge-info p-1"> Update</a>
+                                            <a href="~/Management/SupplierVehicles/@i.Id" class="mr-1 badge badge-pill badge-primary p-1"> Vehicles</a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="card w-100">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-10 text-center">
+                    <h5>There are no added under this supplier</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}
+
+
+<div id="exampleModalLive" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        @using (Html.BeginForm("AddSupplierVehicle", "Management", FormMethod.Post))
+        {
+            <input type="hidden"  name="supplierId" value="@ViewData["supplierId"] "/>
+
+            <div class="modal-content">
+
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLiveLabel">Supplier</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="name">Model</label>
+                        <input type="text" maxlength="50" class="form-control" id="model" name="model" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">Registration</label>
+                        <input type="text" maxlength="50" class="form-control" id="registration" name="registration" required>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn  btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn  btn-primary">Save</button>
+                </div>
+            </div>
+        }
+
+
+
+    </div>
+</div>
+
