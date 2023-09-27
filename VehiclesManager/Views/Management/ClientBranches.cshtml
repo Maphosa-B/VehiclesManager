@@ -1,8 +1,8 @@
-﻿@model  List<VehiclesManager.Entities.Driver>
+﻿@model  List<VehiclesManager.Entities.Branch>
 
 
 @{
-    ViewBag.Title = "Drivers";
+    ViewBag.Title = "Branches";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
 
@@ -12,7 +12,7 @@
             <div class="col-10">
             </div>
             <div class="col-2">
-                <button type="button" class="btn  btn-primary w-100" data-toggle="modal" data-target="#exampleModalLive">Add Driver</button>
+                <button type="button" class="btn  btn-primary w-100" data-toggle="modal" data-target="#exampleModalLive">Add Branch</button>
             </div>
         </div>
     </div>
@@ -28,9 +28,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>First name</th>
-                                    <th>Last name</th>
-                                    <th>Email adress</th>
+                                    <th width="80%">Name</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -38,12 +36,11 @@
                                 @foreach (var i in Model)
                                 {
                                     <tr>
-                                        <td>@i.FirstName</td>
-                                        <td>@i.LastName</td>
-                                        <td>@i.EmailAddress</td>
+                                        <td>@i.Name</td>
+
                                         <td>
                                             <a href="#" class="mr-1 badge badge-pill badge-info p-1"> Update</a>
-                                            <a href="" class="mr-1 badge badge-pill badge-primary p-1">Log</a>
+                                            <a href="~/Management/ClientBranches?clientId=@i.Id" class="mr-1 badge badge-pill badge-primary p-1">Branches</a>
                                         </td>
                                     </tr>
                                 }
@@ -62,7 +59,7 @@ else
         <div class="card-body">
             <div class="row">
                 <div class="col-10 text-center">
-                    <h5>There are no added drivers</h5>
+                    <h5>There are no branches under this client</h5>
                 </div>
             </div>
         </div>
@@ -74,30 +71,20 @@ else
 
 <div id="exampleModalLive" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        @using (Html.BeginForm("AddDriver", "Management", FormMethod.Post))
+        @using (Html.BeginForm("AddClient", "Management", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
             <div class="modal-content">
 
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLiveLabel">Driver</h5>
+                    <h5 class="modal-title" id="exampleModalLiveLabel">Client</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
 
                 <div class="modal-body">
                     <div class="form-group">
-                        <label for="firstname">First Name</label>
-                        <input type="text" maxlength="50" class="form-control" id="firstname" name="firstname" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="lastname">Last Name</label>
-                        <input type="text" maxlength="50" class="form-control" id="lastname" name="lastname" required>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="emailadress">Email Adress</label>
-                        <input type="email" maxlength="50" class="form-control" id="emailadress" name="emailadress" required>
+                        <label for="firstname">Name</label>
+                        <input type="text" maxlength="50" class="form-control" id="name" name="name" required>
                     </div>
                 </div>
 
@@ -110,4 +97,5 @@ else
 
     </div>
 </div>
+
 

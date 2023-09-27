@@ -104,8 +104,6 @@ namespace VehiclesManager.Controllers
             string firstname = fc["firstname"];
             string lastname = fc["lastname"];
             string emailadress = fc["emailadress"];
-            string cellphonenumber = fc["cellphonenumber"];
-
 
 
             _db.Drivers.Add(new Driver()
@@ -128,6 +126,50 @@ namespace VehiclesManager.Controllers
             }
 
             return RedirectToAction("Drivers", "Management");
+        }
+
+        public async Task<ActionResult> Clients()
+        {
+            List<Client> clients = await _db.Clients.Where(x => x.IsActive == true).OrderBy(x => x.Name).ToListAsync();
+            return View(clients);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AddClient(FormCollection fc)
+        {
+            string name = fc["name"];
+
+            _db.Clients.Add(new Client()
+            {
+                AddDate = System.DateTime.Now,
+                IsActive = true,
+                Name = name
+            });
+
+            var status = await _db.SaveChangesAsync();
+            if (status > 0)
+            {
+                TempData["status"] = "Client has been added";
+            }
+            else
+            {
+                TempData["error"] = "Client is not added";
+            }
+
+            return RedirectToAction("Clients", "Management");
+        }
+
+        public async Task<ActionResult> ClientBranches(int? clientId)
+        {
+            if (clientId == null)
+            {
+                return RedirectToAction("Clients", "Management");
+            }
+
+            ViewData["supplierId"] = clientId;
+
+            List<Branch> vehicles = await _db.Branches.Where(x => x.IsActve == true && x.ClientId == clientId).OrderBy(x => x.AddDate).ToListAsync();
+            return View(vehicles);
         }
     }
 }

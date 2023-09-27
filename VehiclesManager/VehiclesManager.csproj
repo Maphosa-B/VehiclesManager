@@ -215,6 +215,10 @@
     <Compile Include="Migrations\202309270042540_Added cellphome number and email on driver details.Designer.cs">
       <DependentUpon>202309270042540_Added cellphome number and email on driver details.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202309271140121_Adding Leased vehicles Table.cs" />
+    <Compile Include="Migrations\202309271140121_Adding Leased vehicles Table.Designer.cs">
+      <DependentUpon>202309271140121_Adding Leased vehicles Table.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -469,6 +473,8 @@
     <Content Include="Views\Management\Suppliers.cshtml" />
     <Content Include="Views\Management\SupplierVehicles.cshtml" />
     <Content Include="Views\Management\Drivers.cshtml" />
+    <Content Include="Views\Management\Clients.cshtml" />
+    <Content Include="Views\Management\ClientBranches.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -510,6 +516,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202309270042540_Added cellphome number and email on driver details.resx">
       <DependentUpon>202309270042540_Added cellphome number and email on driver details.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309271140121_Adding Leased vehicles Table.resx">
+      <DependentUpon>202309271140121_Adding Leased vehicles Table.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -39,6 +39,7 @@ namespace VehiclesManager.Models
         public DbSet<Driver> Drivers { get; set; }
         public DbSet<Client> Clients { get; set; }
         public DbSet<Branch> Branches { get; set; }
+        public DbSet<LeasedVehicle> LeasedVehicles { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
