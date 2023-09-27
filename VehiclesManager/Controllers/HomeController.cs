@@ -43,7 +43,24 @@ namespace VehiclesManager.Controllers
             List<Driver> drivers = await _db.Drivers.Where(x => x.IsActive == true).ToListAsync();
             ViewData["DriverCount"] = drivers.Count();
 
-            return View();
+            List<IndexModel> model = new List<IndexModel>();
+            var clients = await _db.Clients.Where(x => x.IsActive == true).Include(x => x.Branches).ToListAsync();
+            foreach(var i in clients)
+            {
+                IndexModel tempModel = new IndexModel
+                {
+                    Client = i,
+                    NumberOfBranches = i.Branches.Count(),
+                };
+
+                foreach(var r in i.Branches)
+                {
+                    var leaseVehicles = await _db.LeasedVehicles.Where(x => x.BranchId == r.Id && x.IsReturned == false).ToListAsync();
+                    tempModel.TotalLeasedVehicles += leaseVehicles.Count();
+                }
+                model.Add(tempModel);
+            }
+            return View(model);
         }
 
     }

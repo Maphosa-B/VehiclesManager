@@ -1,8 +1,12 @@
-﻿@{
+﻿@model  List<VehiclesManager.Models.IndexModel>
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_MainLayout.cshtml";
 }
-<div class="row">
+
+
+
+<div class="row mt-2">
 
     <!-- table card-1 start -->
     <div class="col-md-12 col-xl-4">
@@ -44,6 +48,37 @@
                 <div class="col-sm-9">
                     <h4>@ViewData["DriverCount"]</h4>
                     <h6>Overall Drivers</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-2">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body table-border-style">
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>Client</th>
+                                <th width="300px">Number of Branches</th>
+                                <th width="300px">Number of allocated vehicles</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var i in Model)
+                            {
+                                <tr>
+                                    <td>@i.Client.Name</td>
+                                    <td>@i.NumberOfBranches</td>
+                                    <td>@i.TotalLeasedVehicles</td>
+                                </tr>
+                            }
+
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>

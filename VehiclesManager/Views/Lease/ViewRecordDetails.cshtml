@@ -84,6 +84,14 @@
                                 <th>@Model.Driver.FirstName  @Model.Driver.LastName (@Model.Driver.EmailAddress)</th>
                             </tr>
 
+                            @if(Model.Comment != null)
+                            {
+                                                            <tr>
+                                <th width="300px">Comment</th>
+                                <th>@Model.Comment</th>
+                            </tr>
+                            }
+
                         </tbody>
                     </table>
                 </div>

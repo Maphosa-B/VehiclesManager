@@ -82,6 +82,14 @@ namespace VehiclesManager.Controllers
                 VehicleId = vehicleId,
                 IsReturned = false,
             });
+
+            //Lets mark a vehice and driver as not being available since they are allocated
+            var dbVehicle = await _db.Vehicles.Where(x => x.Id == vehicleId).FirstOrDefaultAsync();
+            dbVehicle.IsAvailable = false;
+
+            var dbDriver = await _db.Drivers.Where(x => x.Id == driverId).FirstOrDefaultAsync();
+            dbDriver.IsAvailable = false;
+
             var status = await _db.SaveChangesAsync();
             if(status > 0)
             {
@@ -121,11 +129,17 @@ namespace VehiclesManager.Controllers
             string comment = fc["comment"];
             int leasedVehicleId = Convert.ToInt32(fc["leasedVehicleId"]);
 
-            var data = await _db.LeasedVehicles.Where(x => x.Id == leasedVehicleId).FirstOrDefaultAsync();
+            var data = await _db.LeasedVehicles.Where(x => x.Id == leasedVehicleId)
+                                                .Include(x => x.Driver)
+                                                .Include(x => x.Vehicle)
+                                                .FirstOrDefaultAsync();
+
             data.IsReturned = true;
             data.ReturnDate = DateTime.Now;
             data.ConditionStatus = damageStatus;
             data.Comment = comment;
+            data.Driver.IsAvailable = true;
+            data.Vehicle.IsAvailable = true;
 
 
             var status = await _db.SaveChangesAsync();
