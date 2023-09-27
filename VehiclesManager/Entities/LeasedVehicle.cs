@@ -14,6 +14,16 @@ namespace VehiclesManager.Entities
         public int Id { get; set; }
 
         [Required]
+        public bool IsReturned { get; set; } = false;
+
+        [Required]
+        public DateTime AddDate { get; set; } = DateTime.Now;
+
+        public DateTime? ReturnDate { get; set; } = null;
+
+        public int? ConditionStatus { get; set; } = null;
+
+        [Required]
         [ForeignKey("Vehicle")]
         public int VehicleId { get; set; }
 

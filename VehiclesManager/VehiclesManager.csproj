@@ -172,6 +172,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LeaseController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ManagementController.cs" />
     <Compile Include="Entities\Branch.cs" />
@@ -219,9 +220,22 @@
     <Compile Include="Migrations\202309271140121_Adding Leased vehicles Table.Designer.cs">
       <DependentUpon>202309271140121_Adding Leased vehicles Table.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202309271211254_Added additional attributes on LeasedVehicle Entity.cs" />
+    <Compile Include="Migrations\202309271211254_Added additional attributes on LeasedVehicle Entity.Designer.cs">
+      <DependentUpon>202309271211254_Added additional attributes on LeasedVehicle Entity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309271213534_Added add date in Leased vehicle entity.cs" />
+    <Compile Include="Migrations\202309271213534_Added add date in Leased vehicle entity.Designer.cs">
+      <DependentUpon>202309271213534_Added add date in Leased vehicle entity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202309271258338_Added additional attributes on vehicles.cs" />
+    <Compile Include="Migrations\202309271258338_Added additional attributes on vehicles.Designer.cs">
+      <DependentUpon>202309271258338_Added additional attributes on vehicles.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\LeaseRecordsModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -475,6 +489,9 @@
     <Content Include="Views\Management\Drivers.cshtml" />
     <Content Include="Views\Management\Clients.cshtml" />
     <Content Include="Views\Management\ClientBranches.cshtml" />
+    <Content Include="Views\Lease\Clients.cshtml" />
+    <Content Include="Views\Lease\ClientBranches.cshtml" />
+    <Content Include="Views\Lease\BranchLeaseRecords.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -519,6 +536,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202309271140121_Adding Leased vehicles Table.resx">
       <DependentUpon>202309271140121_Adding Leased vehicles Table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309271211254_Added additional attributes on LeasedVehicle Entity.resx">
+      <DependentUpon>202309271211254_Added additional attributes on LeasedVehicle Entity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309271213534_Added add date in Leased vehicle entity.resx">
+      <DependentUpon>202309271213534_Added add date in Leased vehicle entity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202309271258338_Added additional attributes on vehicles.resx">
+      <DependentUpon>202309271258338_Added additional attributes on vehicles.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

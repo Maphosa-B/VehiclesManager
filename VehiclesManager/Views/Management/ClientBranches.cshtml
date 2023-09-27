@@ -40,7 +40,7 @@
 
                                         <td>
                                             <a href="#" class="mr-1 badge badge-pill badge-info p-1"> Update</a>
-                                            <a href="~/Management/ClientBranches?clientId=@i.Id" class="mr-1 badge badge-pill badge-primary p-1">Branches</a>
+                                            <a href="" class="mr-1 badge badge-pill badge-primary p-1">Lease Records</a>
                                         </td>
                                     </tr>
                                 }
@@ -71,9 +71,10 @@ else
 
 <div id="exampleModalLive" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        @using (Html.BeginForm("AddClient", "Management", FormMethod.Post))
+        @using (Html.BeginForm("AddBranch", "Management", FormMethod.Post))
         {
             @Html.AntiForgeryToken()
+            <input name="clientId" type="hidden" value="@ViewData["clientId"]" />
             <div class="modal-content">
 
                 <div class="modal-header">

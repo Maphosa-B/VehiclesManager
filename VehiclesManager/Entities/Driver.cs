@@ -29,6 +29,9 @@ namespace VehiclesManager.Entities
         public bool IsActive { get; set; } = true;
 
         [Required]
+        public bool IsAvailable { get; set; } = true;
+
+        [Required]
         public DateTime AddDate { get; set; } = DateTime.Now;
     }
 }

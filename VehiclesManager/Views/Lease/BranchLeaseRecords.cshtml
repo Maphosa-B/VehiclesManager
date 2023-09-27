@@ -1,0 +1,143 @@
+﻿@model  VehiclesManager.Models.LeaseRecordsModel
+@{
+    ViewBag.Title = "Lease Records";
+    Layout = "~/Views/Shared/_MainLayout.cshtml";
+}
+
+<div class="card w-100 mb-2">
+    <div class="card-body">
+        <div class="row">
+            <div class="col-10">
+                Lease Records
+            </div>
+            <div class="col-2">
+                <button type="button" class="btn  btn-primary w-100" data-toggle="modal" data-target="#exampleModalLive">Lease</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@if (Model.Records.Count() > 0)
+{
+    <div class="row">
+        <div class="col-12">
+            <div class="card">
+                <div class="card-body table-border-style">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th width="250px">Vehicle</th>
+                                    <th width="250px">Lease Date</th>
+                                    <th width="250px">Return Date</th>
+                                    <th width="250px">Return Condition</th>
+                                    <th width="250px">Driver</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var i in Model.Records)
+                                {
+                                    <tr>
+                                        <td>@i.Vehicle.Supplier.Name - @i.Vehicle.Model ( @i.Vehicle.Registration )</td>
+                                        <td>@i.AddDate</td>
+
+                                         @if(i.IsReturned == false)
+                                         { 
+                                              <td>NR</td>
+                                              <td>NR</td>
+                                         }else
+                                         { 
+                                              <td>@i.ReturnDate</td>
+                                              if(i.ConditionStatus == 1)
+                                              { 
+                                                   <td>Minor Damage</td>
+                                              }else if(i.ConditionStatus ==2)
+                                              { 
+                                                  <td>Major Damage</td>
+                                              }else
+                                              { 
+                                                    <td>No Damage</td>
+                                              }
+                                         }
+                                         <td>@i.Driver.FirstName @i.Driver.LastName</td>
+
+                                        <td>
+                                            <a href="#" class="mr-1 badge badge-pill badge-info p-1"> Update</a>
+                                        </td>
+                                    </tr>
+                                 }
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="card w-100">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-10 text-center">
+                    <h5>There are no added suppliers</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}
+
+
+<div id="exampleModalLive" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalLiveLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        @using (Html.BeginForm("SaveLeaseRecord", "Lease", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="branchId" value="@ViewData["branchId"]"/>
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLiveLabel">Lease vehicle</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="name">Vehicle</label>
+
+                        <select class="custom-select" name="vehicleId" required>
+                            @foreach (var i in Model.AvailableVehicles)
+                            {
+                                <option value="@i.Id">@i.Supplier.Name - @i.Model ( @i.Registration )</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">Driver</label>
+
+                        <select class="custom-select" name="driverId" required>
+                            @foreach (var i in Model.AvailableDrivers)
+                            {
+                                <option value="@i.Id">@i.FirstName  @i.LastName ( @i.EmailAddress )</option>
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button type="button" class="btn  btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn  btn-primary">Lease</button>
+                </div>
+            </div>
+        }
+
+
+
+    </div>
+</div>

@@ -76,6 +76,7 @@ namespace VehiclesManager.Controllers
                 Registration = registration,
                 SupplierId = supplierId,
                 Model = model,
+                IsAvailable = true
             });
 
             var status = await _db.SaveChangesAsync();
@@ -113,6 +114,7 @@ namespace VehiclesManager.Controllers
                 FirstName = firstname,
                 LastName = lastname,
                 EmailAddress = emailadress,
+                IsAvailable = true
             });
 
             var status = await _db.SaveChangesAsync();
@@ -166,10 +168,37 @@ namespace VehiclesManager.Controllers
                 return RedirectToAction("Clients", "Management");
             }
 
-            ViewData["supplierId"] = clientId;
+            ViewData["clientId"] = clientId;
 
             List<Branch> vehicles = await _db.Branches.Where(x => x.IsActve == true && x.ClientId == clientId).OrderBy(x => x.AddDate).ToListAsync();
             return View(vehicles);
+        }
+
+        [HttpPost]
+        public async Task<ActionResult> AddBranch(FormCollection fc)
+        {
+
+            string name = fc["name"];
+            int clientId = Convert.ToInt32(fc["clientId"]);
+
+            _db.Branches.Add(new Branch
+            {
+                AddDate = DateTime.Now,
+                ClientId = clientId,
+                IsActve = true,
+                Name = name,
+            });
+
+            var status = await _db.SaveChangesAsync();
+            if(status >0)
+            {
+                TempData["status"] = "Branch has been added";
+            }else
+            {
+                TempData["error"] = "Branch was not added";
+            }
+
+            return RedirectToAction("ClientBranches", "Management",new { clientId = clientId});
         }
     }
 }
