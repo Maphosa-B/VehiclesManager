@@ -52,6 +52,14 @@ namespace VehiclesManager.Controllers
             }
         }
 
+        private IAuthenticationManager AuthenticationManager
+        {
+            get
+            {
+                return HttpContext.GetOwinContext().Authentication;
+            }
+        }
+
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
@@ -76,6 +84,12 @@ namespace VehiclesManager.Controllers
             {
                 return RedirectToAction("Login", "Account");
             }
+        }
+
+        public ActionResult LogOff()
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            return RedirectToAction("Login", "Account");
         }
 
     }
