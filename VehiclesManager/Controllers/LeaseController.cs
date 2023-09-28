@@ -95,10 +95,10 @@ namespace VehiclesManager.Controllers
             var status = await _db.SaveChangesAsync();
             if(status > 0)
             {
-
+                TempData["status"] = "Record has been saved";
             }else
             {
-
+                TempData["error"] = "There wa some error, record is not saved";
             }
 
             return RedirectToAction("BranchLeaseRecords", "Lease", new { branchId = branchId });
@@ -148,11 +148,11 @@ namespace VehiclesManager.Controllers
             var status = await _db.SaveChangesAsync();
             if (status > 0)
             {
-
+                TempData["status"] = "Record has been saved";
             }
             else
             {
-
+                TempData["error"] = "There wa some error, record is not saved";
             }
             return RedirectToAction("ViewRecordDetails", "Lease", new { leasedVehicleId = leasedVehicleId });
         }

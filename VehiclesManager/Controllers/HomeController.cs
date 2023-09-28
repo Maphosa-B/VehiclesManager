@@ -22,7 +22,6 @@ namespace VehiclesManager.Controllers
 
         public async Task<ActionResult> Index()
         {
-
             var suppliers = await _db.Suppliers.Where(x =>x.IsActive == true).Include(x => x.Vehicles).ToListAsync();
 
 

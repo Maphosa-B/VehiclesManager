@@ -27,7 +27,8 @@
     <!-- vendor css -->
     <link rel="stylesheet" href="~/Template/assets/css/style.css">
 
-
+    <link href="~/Content/alertifyjs/alertify.min.css" rel="stylesheet" />
+    <link href="~/Content/alertifyjs/themes/default.rtl.min.css" rel="stylesheet" />
 
 
 </head>
@@ -37,7 +38,7 @@
         <div class="auth-content text-center">
 
             <img src="~/Template/assets/images/logo.png" alt="" class="img-fluid mb-4">
-           
+
             <div class="card borderless">
                 <div class="row align-items-center ">
                     <div class="col-md-12">
@@ -71,6 +72,26 @@
     <script src="~/Template/assets/js/plugins/bootstrap.min.js"></script>
 
     <script src="~/Template/assets/js/pcoded.min.js"></script>
+
+    <script src="~/Scripts/alertify.min.js"></script>
+    <script>
+
+        $(function () {
+            var status = '@TempData["status"]'
+            if (status != '') {
+                alertify.set('notifier', 'position', 'top-right');
+                alertify.success(status);
+
+            } else {
+                var error = '@TempData["error"]'
+                if (error != '') {
+                    alertify.set('notifier', 'position', 'top-right');
+                    alertify.error(error);
+                }
+            }
+        });
+
+    </script>
 </body>
 
 </html>

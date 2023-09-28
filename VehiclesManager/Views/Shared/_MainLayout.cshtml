@@ -16,6 +16,8 @@
     <!-- vendor css -->
     <link rel="stylesheet" href="~/Template/assets/css/style.css">
 
+    <link href="~/Content/alertifyjs/alertify.min.css" rel="stylesheet" />
+    <link href="~/Content/alertifyjs/themes/default.rtl.min.css" rel="stylesheet" />
 
 </head>
 <body class="">
@@ -111,6 +113,25 @@
 
     <!-- custom-chart js -->
     <script src="~/Template/assets/js/pages/dashboard-main.js"></script>
+    <script src="~/Scripts/alertify.min.js"></script>
+    <script>
+
+        $(function () {
+            var status = '@TempData["status"]'
+            if (status != '') {
+                alertify.set('notifier', 'position', 'top-right');
+                alertify.success(status);
+
+            } else {
+                var error = '@TempData["error"]'
+                if (error != '') {
+                    alertify.set('notifier', 'position', 'top-right');
+                    alertify.error(error);
+                }
+            }
+        });
+
+    </script>
 </body>
 
 </html>

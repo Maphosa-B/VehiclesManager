@@ -36,13 +36,16 @@ namespace VehiclesManager.Controllers
                 IsActive = true,
                 Name = name,
             });
+
+
             var status = await _db.SaveChangesAsync();
-            if(status > 0)
+            if (status > 0)
             {
-                TempData["status"] = "Supplier has been added";
-            }else
+                TempData["status"] = "Record has been saved";
+            }
+            else
             {
-                TempData["error"] = "Supplier is not added";
+                TempData["error"] = "There wa some error, record is not saved";
             }
 
             return RedirectToAction("Suppliers", "Management");
@@ -82,13 +85,14 @@ namespace VehiclesManager.Controllers
             });
 
             var status = await _db.SaveChangesAsync();
+
             if (status > 0)
             {
-                TempData["status"] = "Vehicle has been added";
+                TempData["status"] = "Record has been saved";
             }
             else
             {
-                TempData["error"] = "Vehicle is not added";
+                TempData["error"] = "There wa some error, record is not saved";
             }
 
             return RedirectToAction("SupplierVehicles", "Management", new { supplierId = supplierId });
@@ -121,13 +125,14 @@ namespace VehiclesManager.Controllers
             });
 
             var status = await _db.SaveChangesAsync();
+
             if (status > 0)
             {
-                TempData["status"] = "Driver has been added";
+                TempData["status"] = "Record has been saved";
             }
             else
             {
-                TempData["error"] = "Driver is not added";
+                TempData["error"] = "There wa some error, record is not saved";
             }
 
             return RedirectToAction("Drivers", "Management");
@@ -152,16 +157,16 @@ namespace VehiclesManager.Controllers
                 Name = name
             });
 
+
             var status = await _db.SaveChangesAsync();
             if (status > 0)
             {
-                TempData["status"] = "Client has been added";
+                TempData["status"] = "Record has been saved";
             }
             else
             {
-                TempData["error"] = "Client is not added";
+                TempData["error"] = "There wa some error, record is not saved";
             }
-
             return RedirectToAction("Clients", "Management");
         }
 
@@ -195,12 +200,13 @@ namespace VehiclesManager.Controllers
             });
 
             var status = await _db.SaveChangesAsync();
-            if(status >0)
+            if (status > 0)
             {
-                TempData["status"] = "Branch has been added";
-            }else
+                TempData["status"] = "Record has been saved";
+            }
+            else
             {
-                TempData["error"] = "Branch was not added";
+                TempData["error"] = "There wa some error, record is not saved";
             }
 
             return RedirectToAction("ClientBranches", "Management",new { clientId = clientId});
