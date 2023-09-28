@@ -63,6 +63,7 @@ namespace VehiclesManager.Controllers
 
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> AddSupplierVehicle(FormCollection fc)
         {
             string registration = fc["registration"];
@@ -100,6 +101,7 @@ namespace VehiclesManager.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> AddDriver(FormCollection fc)
         {
             string firstname = fc["firstname"];
@@ -137,6 +139,7 @@ namespace VehiclesManager.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> AddClient(FormCollection fc)
         {
             string name = fc["name"];
@@ -175,6 +178,7 @@ namespace VehiclesManager.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> AddBranch(FormCollection fc)
         {
 

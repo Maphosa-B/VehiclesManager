@@ -66,6 +66,7 @@ namespace VehiclesManager.Controllers
 
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> SaveLeaseRecord(FormCollection fc)
         {
             int branchId = Convert.ToInt32(fc["branchId"]);
@@ -123,6 +124,7 @@ namespace VehiclesManager.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> ReturnVehicle(FormCollection fc)
         {
             int damageStatus = Convert.ToInt32(fc["damageStatus"]);
