@@ -9,7 +9,7 @@ using VehiclesManager.Models;
 
 namespace VehiclesManager.Controllers
 {
-    [Authorize]
+    [Authorize(Roles = "Admin")]
     public class ManagementController : Controller
     {
         private readonly ApplicationDbContext _db;
