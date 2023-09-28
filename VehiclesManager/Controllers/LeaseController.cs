@@ -10,6 +10,7 @@ using VehiclesManager.Models;
 
 namespace VehiclesManager.Controllers
 {
+    [Authorize]
     public class LeaseController : Controller
     {
         private readonly ApplicationDbContext _db;
